@@ -1,0 +1,21 @@
+{
+  "kind": "collectionType",
+  "collectionName": "actres",
+  "info": {
+    "name": "Actres"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "full_name": {
+      "type": "string"
+    },
+    "movies": {
+      "via": "actres",
+      "collection": "movies"
+    }
+  }
+}
