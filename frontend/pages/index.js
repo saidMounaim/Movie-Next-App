@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import Card from '../components/Card';
 
 const Home = ({ movies }) => {
-	console.log(movies);
 	return (
 		<div className="container">
 			<h1>Movies</h1>

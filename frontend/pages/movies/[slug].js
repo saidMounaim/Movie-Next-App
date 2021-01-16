@@ -13,13 +13,13 @@ const MovieDetail = ({ movie }) => {
 const { publicRuntimeConfig } = getConfig();
 
 export const getServerSideProps = async (context) => {
-	const { id } = context.query;
+	const { slug } = context.query;
 
-	const data = await fetch(`${publicRuntimeConfig.API_URL}/movies/${id}`).then((response) => response.json());
+	const data = await fetch(`${publicRuntimeConfig.API_URL}/movies?slug=${slug}`).then((response) => response.json());
 
 	return {
 		props: {
-			movie: data,
+			movie: data[0],
 		},
 	};
 };

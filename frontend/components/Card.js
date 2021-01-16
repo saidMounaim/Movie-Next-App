@@ -6,7 +6,7 @@ const Card = ({ movie }) => {
 	const { API_URL } = process.env;
 	return (
 		<CardStyled>
-			<Link href="/movies/[id]" as={`/movies/${movie.id}`}>
+			<Link href="/movies/[slug]" as={`/movies/${movie.slug}`}>
 				<a>
 					<img src={`${API_URL}${movie.cover.url}`} alt="Movie Img" />
 					<div className="info">
