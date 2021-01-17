@@ -2,8 +2,14 @@ import fetch from 'isomorphic-fetch';
 import styled from 'styled-components';
 import Card from '../../components/Card';
 import { useRouter } from 'next/router';
+import { NextSeo } from 'next-seo';
 
 const Movies = ({ movies, page }) => {
+	const SEO = {
+		title: 'Movies Page',
+		description: 'just movies page',
+	};
+
 	const moviesPerPage = 3;
 	const moviesLength = movies.length;
 
@@ -22,26 +28,32 @@ const Movies = ({ movies, page }) => {
 	const filtredMovies = movies.slice(indexOfFirstMovies, indexOfLastMovies);
 
 	return (
-		<div className="container">
-			<h1>Movies</h1>
-			<MoviesStyled>
-				{filtredMovies.map((movie) => (
-					<Card key={movie.id} movie={movie} />
-				))}
-			</MoviesStyled>
+		<>
+			<NextSeo {...SEO} />
+			<div className="container">
+				<h1>Movies</h1>
+				<MoviesStyled>
+					{filtredMovies.map((movie) => (
+						<Card key={movie.id} movie={movie} />
+					))}
+				</MoviesStyled>
 
-			<PaginateStyled>
-				<button disabled={page === 1 ? true : false} onClick={() => router.push(`/movies?page=${page - 1}`)}>
-					Prev
-				</button>
-				<button
-					disabled={page === totalPages ? true : false}
-					onClick={() => router.push(`/movies?page=${page + 1}`)}
-				>
-					Next
-				</button>
-			</PaginateStyled>
-		</div>
+				<PaginateStyled>
+					<button
+						disabled={page === 1 ? true : false}
+						onClick={() => router.push(`/movies?page=${page - 1}`)}
+					>
+						Prev
+					</button>
+					<button
+						disabled={page === totalPages ? true : false}
+						onClick={() => router.push(`/movies?page=${page + 1}`)}
+					>
+						Next
+					</button>
+				</PaginateStyled>
+			</div>
+		</>
 	);
 };
 

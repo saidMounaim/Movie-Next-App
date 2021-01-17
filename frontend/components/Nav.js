@@ -20,6 +20,11 @@ const Nav = () => {
 					</Link>
 				</li>
 				<li>
+					<Link href="/about">
+						<a className={router.pathname === '/about' ? 'active' : ''}>About</a>
+					</Link>
+				</li>
+				<li>
 					<Link href="/contact">
 						<a className={router.pathname === '/contact' ? 'active' : ''}>Contact</a>
 					</Link>

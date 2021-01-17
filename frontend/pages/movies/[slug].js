@@ -1,12 +1,21 @@
 import fetch from 'isomorphic-fetch';
 import getConfig from 'next/config';
+import { NextSeo } from 'next-seo';
 
 const MovieDetail = ({ movie }) => {
+	const SEO = {
+		title: `${movie.title}`,
+		description: `${movie.description}`,
+	};
+
 	return (
-		<div className="container">
-			<h1>{movie.title}</h1>
-			<p>{movie.description}</p>
-		</div>
+		<>
+			<NextSeo {...SEO} />
+			<div className="container">
+				<h1>{movie.title}</h1>
+				<p>{movie.description}</p>
+			</div>
+		</>
 	);
 };
 
