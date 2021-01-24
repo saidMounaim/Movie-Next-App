@@ -1,7 +1,9 @@
+import App from 'next/app';
 import Header from '../components/Header';
 import { ThemeProvider } from 'styled-components';
 import GlobalStyles from '../components/GlobalStyles';
 import { DefaultSeo } from 'next-seo';
+import { appWithTranslation } from '../i18n';
 import SEO from '../next-seo.config';
 
 function MyApp({ Component, pageProps }) {
@@ -23,4 +25,6 @@ function MyApp({ Component, pageProps }) {
 	);
 }
 
-export default MyApp;
+MyApp.getInitialProps = async (appContext) => ({ ...(await App.getInitialProps(appContext)) });
+
+export default appWithTranslation(MyApp);

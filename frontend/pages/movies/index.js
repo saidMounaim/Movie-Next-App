@@ -3,8 +3,9 @@ import styled from 'styled-components';
 import Card from '../../components/Card';
 import { useRouter } from 'next/router';
 import { NextSeo } from 'next-seo';
+import { withTranslation } from '../../i18n';
 
-const Movies = ({ movies, page }) => {
+const Movies = ({ movies, page, t }) => {
 	const SEO = {
 		title: 'Movies Page',
 		description: 'just movies page',
@@ -31,7 +32,7 @@ const Movies = ({ movies, page }) => {
 		<>
 			<NextSeo {...SEO} />
 			<div className="container">
-				<h1>Movies</h1>
+				<h1>{t('Latest Movies')}</h1>
 				<MoviesStyled>
 					{filtredMovies.map((movie) => (
 						<Card key={movie.id} movie={movie} />
@@ -90,4 +91,4 @@ export const getServerSideProps = async ({ query: { page = 1 } }) => {
 	};
 };
 
-export default Movies;
+export default withTranslation('common')(Movies);
